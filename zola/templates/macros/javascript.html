@@ -1,6 +1,17 @@
 {% macro javascript() %}
 <script src="{{ get_url(path="js/settings.js") | safe }}" defer></script>
 <script src="{{ get_url(path="js/main.js") | safe }}" defer></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {% if config.build_search_index %}
   <script src="{{ get_url(path="plugins/elasticlunr.min.js") | safe }}" defer></script>
   <script src="{{ get_url(path="search_index." ~ lang ~ ".js") | safe }}" defer></script>
